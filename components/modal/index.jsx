@@ -6,6 +6,7 @@ export function ModalPassword({ password, handleClose }){
     async function handleCopyPassword(){
         await Clipboard.setStringAsync(password)
         alert("Senha salva com sucesso!")
+        handleClose();    
     }
 
     return(
