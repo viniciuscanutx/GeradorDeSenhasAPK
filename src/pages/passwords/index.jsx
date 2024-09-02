@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, FlatList} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useIsFocused } from '@react-navigation/native';
 import useStorage from '../../hooks/useStorage'
+
+import {PasswordItem} from './components/passworditem'
 
 export function Passwords(){
 
@@ -13,16 +15,30 @@ export function Passwords(){
     useEffect(() => {
         async function loadPasswords(){
             const passwords = await getItem("@pass")
-            console.log(passwords);
+            setListPasswords(passwords);
         }
         loadPasswords();
-    },
-    [focused])
+    }, [focused])
+
+    function handleDeletePassword(item){
+        console.log(item);
+    }
 
     return(
         <SafeAreaView style={{flex:1,}}>
             <View style={styles.header}>
                 <Text style={styles.title}>Minhas senhas</Text>
+            </View>
+
+            <View style={styles.content}>
+                <FlatList
+                style={{
+                    flex: 1, 
+                    paddingTop: 20,}}
+                data={listPasswords}
+                keyExtractor={ (item) => String(item) }
+                renderItem={ ({item}) => <PasswordItem data={item} removePassword={ () => handleDeletePassword(item)} /> }
+                />
             </View>
         </SafeAreaView>
     )
@@ -42,5 +58,10 @@ const styles = StyleSheet.create({
         fontSize: 22,
         color: "#FFF",
         fontWeight: 'bold',
+    },
+    content:{
+        flex: 1,
+        paddingLeft: 14,
+        paddingRight: 14,
     }
 })
