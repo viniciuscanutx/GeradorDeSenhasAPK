@@ -12,20 +12,20 @@ Um aplicativo simples para gerar senhas seguras de acordo com as especificaçõe
 ## 🛠️ Tecnologias Utilizadas
 
 - **Linguagem de Programação:** [JavaScript]
-- **Framework ou Biblioteca:** [React]
+- **Framework ou Biblioteca:** [Expo/React]
 
 ## 🚀 Como Usar
 
 ### Pré-requisitos
 
-- [Node.js/React/Outro] instalado.
+- [Node.js/Expo] instalado.
 
 ### Passo a Passo
 
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/viniciuscanutx/GeradorDeSenhasAPK.git
     ```
 
 2. Navegue até o diretório do projeto:
@@ -58,6 +58,7 @@ Para realizar o deploy do seu projeto em produção, execute:
 
 ```bash
 npm run build
+```
 
 ## 🤝 Contribuindo
 
