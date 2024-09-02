@@ -10,7 +10,7 @@ export function Passwords(){
 
     const [listPasswords, setListPasswords] = useState([])
     const focused = useIsFocused();
-    const { getItem } = useStorage();
+    const { getItem, removeItem } = useStorage();
 
     useEffect(() => {
         async function loadPasswords(){
@@ -20,8 +20,9 @@ export function Passwords(){
         loadPasswords();
     }, [focused])
 
-    function handleDeletePassword(item){
-        console.log(item);
+    async function handleDeletePassword(item){
+        const passwords = await removeItem("@pass", item)
+        setListPasswords(passwords)
     }
 
     return(
